@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="min-h-screen flex flex-col md:flex-row">
+    <!-- Sidebar for Desktop -->
+    <aside class="hidden md:flex flex-col bg-white w-64 h-screen shadow-md">
+      <div class="py-24 px-4 space-y-14">
+        <nav class="space-y-12">
+          <a href="#" class="flex flex-col items-center text-gray-700 hover:text-blue-500">
+            <span class="text-2xl">
+              <i class="fa-solid fa-bullhorn"></i>
+            </span>
+            <span>Announcement</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-700 hover:text-blue-500">
+            <span class="text-2xl">
+              <i class="fa-solid fa-users"></i>
+            </span>
+            <span>User Management</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-700 hover:text-blue-500">
+            <span class="text-2xl">
+              <i class="fa-solid fa-file-lines"></i>
+            </span>
+            <span>Report</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-700 hover:text-blue-500">
+            <span class="text-2xl">
+              <i class="fa-solid fa-database"></i>
+            </span>
+            <span>Database Management</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-700 hover:text-blue-500">
+            <span class="text-2xl">
+              <i class="fa-solid fa-book"></i>
+            </span>
+            <span>Activity Log</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Header -->
+      <header class="bg-white shadow p-4 flex items-center justify-between">
+        <!-- Search Bar -->
+        <div class="flex items-center border border-gray-300 rounded-full overflow-hidden mx-auto max-w-md">
+          <input type="text" placeholder="Search" class="flex-grow px-4 py-2 text-sm focus:outline-none">
+          <button class="px-4 bg-200">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <!-- Notification Bell and Profile Icon -->
+        <div class="flex items-center space-x-4">
+          <!-- Notification Bell -->
+          <button aria-label="Notifications" class="text-xl">
+            <i class="fa-regular fa-bell"></i>
+          </button>
+          
+          <!-- Profile Dropdown -->
+          <div class="relative">
+            <!-- Profile Icon -->
+            <button 
+              id="profileDropdownButton" 
+              class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center focus:outline-none">
+              <i class="fa-regular fa-user"></i>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div 
+              id="profileDropdownMenu" 
+              class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border">
+              <a href="#profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+              <a href="#logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="flex-1 flex flex-col md:flex-row">
+        <!-- Navigation Menu for Mobile -->
+        <nav class="flex justify-around bg-white py-10 shadow-md md:hidden">
+          <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+            <span class="text-xl">
+              <i class="fa-solid fa-bullhorn"></i>
+            </span>
+            <span class="text-xs">Announcement</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+            <span class="text-xl">
+              <i class="fa-solid fa-users"></i>
+            </span>
+            <span class="text-xs">User Management</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+            <span class="text-xl">
+              <i class="fa-solid fa-file-lines"></i>
+            </span>
+            <span class="text-xs">Report</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+            <span class="text-xl">
+              <i class="fa-solid fa-database"></i>
+            </span>
+            <span class="text-xs">Database</span>
+          </a>
+          <a href="#" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+            <span class="text-xl">
+              <i class="fa-solid fa-book"></i>
+            </span>
+            <span class="text-xs">Activity Log</span>
+          </a>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="flex-1 bg-white shadow rounded-md m-4 border">
+          <div class="text-gray-500 h-full flex justify-center items-center">
+            <h1 class="text-lg font-semibold">Content Area</h1>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for toggling the dropdown
+    const profileDropdownButton = document.getElementById('profileDropdownButton');
+    const profileDropdownMenu = document.getElementById('profileDropdownMenu');
+
+    profileDropdownButton.addEventListener('click', () => {
+      profileDropdownMenu.classList.toggle('hidden');
+    });
+
+    // Close the dropdown when clicking outside of it
+    document.addEventListener('click', (event) => {
+      if (!profileDropdownButton.contains(event.target) && !profileDropdownMenu.contains(event.target)) {
+        profileDropdownMenu.classList.add('hidden');
+      }
+    });
+  </script>
+
+</body>
+</html>
